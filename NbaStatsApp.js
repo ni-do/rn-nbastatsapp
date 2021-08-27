@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import {
   SafeAreaView,
   ScrollView,
@@ -16,7 +17,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-
+import MainStack from './stacks/main/MainStack.js';
 import Logo from './screens/Logo.js'
 
 import {
@@ -50,7 +51,7 @@ const Section = ({children, title}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
-      <Logo />
+      <Logo image={require("./assets/NBAStatsLogo.png")}/>
       <Text>{children}</Text>
     </View>
   );
@@ -64,22 +65,25 @@ const NbaStatsApp = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="App Logo" style={styles.sectionTitle}>
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView style={backgroundStyle}>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={backgroundStyle}>
+          <View
+            style={{
+              backgroundColor: isDarkMode ? Colors.black : Colors.white,
+            }}>
+            <Section title="App Logo" style={styles.sectionTitle}>
+              Edit <Text style={styles.highlight}>App.js</Text> to change this
+              screen and then come back to see your edits.
+            </Section>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+      <MainStack />
+    </NavigationContainer>
   )
 }
 

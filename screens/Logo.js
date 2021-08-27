@@ -1,9 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native'
 
-const imagePath = './../assets/NBAStatsLogo.png'
-const imageSrc = require(imagePath)
-
 const styles = StyleSheet.create({
   tinyLogo: {
     width: 50,
@@ -14,9 +11,9 @@ const styles = StyleSheet.create({
   },
 })
 
-const Logo = (props) => {
+const Logo = ({ image }) => {
   return (
-    <Image style={styles.logo} source={imageSrc} />
+    <Image style={styles.logo} source={image} />
   )
 }
 
