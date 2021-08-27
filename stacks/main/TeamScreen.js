@@ -1,5 +1,6 @@
-import React from "react";
-import { View, Text } from "react-native"
+import React from 'react'
+
+import { View, Text } from 'react-native'
 import Logo from './../../screens/Logo.js'
 
 const TeamScreen = ({
@@ -9,10 +10,11 @@ const TeamScreen = ({
   const { logo, title, estimated } = route.params
   return (
     <View>
-      <Logo image={logo}/>
+      <Logo image={logo} />
       <Text>{title} { estimated ? `(${estimated})` : null }</Text>
     </View>
   )
 }
 
-export default TeamScreen;
+export default TeamScreen
+

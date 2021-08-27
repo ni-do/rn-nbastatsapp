@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
   },
 })
 
-const Logo = ({ image }) => {
+const Logo = ({ image, style }) => {
   return (
-    <Image style={styles.logo} source={image} />
+    <Image style={style || styles.logo} source={image} />
   )
 }
 
