@@ -1,21 +1,18 @@
 import React from "react";
+import { View, Text } from "react-native"
 import Logo from './../../screens/Logo.js'
 
 const TeamScreen = ({
   navigation,
   route
 }) => {
-  const { teamName } = route.params
-  switch (teamName) {
-    case '76ers':
-      return (<Logo image={require('./../../assets/teamlogos/76ers.png')}/>)
-    case 'lakers':
-      return (<Logo image={require('./../../assets/teamlogos/lakers.png')}/>)
-    case 'mavericks':
-      return (<Logo image={require('./../../assets/teamlogos/mavericks.png')}/>)
-    default:
-      return null
-  }
+  const { logo, title, estimated } = route.params
+  return (
+    <View>
+      <Logo image={logo}/>
+      <Text>{title} { estimated ? `(${estimated})` : null }</Text>
+    </View>
+  )
 }
 
 export default TeamScreen;

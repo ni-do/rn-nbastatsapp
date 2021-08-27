@@ -1,27 +1,25 @@
 import React from "react"
 import { View, Button } from "react-native"
+import getTeams from "../../data/Teams"
 
 const MainScreen = ({ navigation }) => {
+  const teams = getTeams()
+  // const teams = JSON.parse(teamsJSON)
   return (
     <View>
-      <Button
-        title="76ers"
-        onPress={() =>
-          navigation.navigate('Team', { teamName: '76ers' })
-        }
-      />
-      <Button
-        title="Lakers"
-        onPress={() =>
-          navigation.navigate('Team', { teamName: 'lakers' })
-        }
-      />
-      <Button
-        title="mavericks"
-        onPress={() =>
-          navigation.navigate('Team', { teamName: 'mavericks' })
-        }
-      />
+      {
+        teams.map((team) => {
+          return (
+            <Button
+              key={team.teamName}
+              title={team.title}
+              onPress={() =>
+                navigation.navigate('Team', team)
+              }
+            />
+          )
+        })
+      }
     </View>
   )
 }
