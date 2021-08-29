@@ -50,8 +50,39 @@ const getTeams = () => {
   console.log('fetching data with axios...')
   return axios.request(options).then(function (response) {
     console.log('data fetched with axios...')
-    // console.log(response.data);
-    return response.data["data"]
+    console.log(response.data["data"].pop());
+    const teamsWithLogos = response.data["data"].map((team) => {
+      let logo = null
+      switch (team.name) {
+        case 'Celtics':
+          logo = require("./../assets/teamlogos/celtics.png")
+          break
+        case 'Warriors':
+          logo = require("./../assets/teamlogos/warriors.png")
+          break
+        case '76ers':
+          logo = require("./../assets/teamlogos/76ers.png")
+          break
+        case 'Lakers':
+          logo = require("./../assets/teamlogos/lakers.png")
+          break
+        case 'Mavericks':
+          logo = require("./../assets/teamlogos/mavericks.png")
+          break  
+        case 'Cavaliers':
+          logo = require("./../assets/teamlogos/cavaliers.png")
+          break
+        case 'Wizards':
+        default:
+          logo = require("./../assets/teamlogos/no_logo.png")
+          break;
+      }
+      return {
+        ...team,
+        logo
+      }
+    })
+    return teamsWithLogos
   }).catch(function (error) {
     console.log('error while fetching data with axios...')
     console.error(error);
