@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import {
   View,
+  ScrollView,
   StyleSheet,
   TouchableOpacity,
   Text,
@@ -15,7 +16,6 @@ const styles = StyleSheet.create({
     marginTop: 32,
     paddingHorizontal: 24,
     flexDirection: 'row',
-    flex: 1,
     flexWrap: 'wrap',
   },
   tinyLogo: {
@@ -38,7 +38,7 @@ const MainScreen = ({ navigation }) => {
 
   
   return (
-    <View style={styles.buttonContainer}>
+    <ScrollView contentContainerStyle={styles.buttonContainer}>
       {teams.length > 0 ? 
         teams.map((team) => {
         // console.log('team:', team)
@@ -60,7 +60,7 @@ const MainScreen = ({ navigation }) => {
       })
       : null
     }
-    </View>
+    </ScrollView>
   )
 }
 
