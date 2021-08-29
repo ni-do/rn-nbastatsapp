@@ -50,7 +50,6 @@ const getTeams = () => {
   console.log('fetching data with axios...')
   return axios.request(options).then(function (response) {
     console.log('data fetched with axios...')
-    console.log(response.data["data"].pop());
     const teamsWithLogos = response.data["data"].map((team) => {
       let logo = null
       switch (team.name) {
@@ -71,6 +70,18 @@ const getTeams = () => {
           break  
         case 'Cavaliers':
           logo = require("./../assets/teamlogos/cavaliers.png")
+          break
+        case 'Hawks':
+          logo = require("./../assets/teamlogos/hawks.png")
+          break  
+        case 'Nets':
+          logo = require("./../assets/teamlogos/nets.png")
+          break
+        case 'Hornets':
+          logo = require("./../assets/teamlogos/hornets.png")
+          break
+        case 'Bulls':
+          logo = require("./../assets/teamlogos/bulls.png")
           break
         case 'Wizards':
         default:
