@@ -52,6 +52,9 @@ const MainScreen = ({ navigation }) => {
             onPress={() =>
               navigation.navigate('Team', team)
             }
+            onLongPress={() => {
+              console.log('long press')
+            }}
           >
             <Logo image={team.logo} style={styles.tinyLogo}/>
             <Text>{team.full_name}</Text>
