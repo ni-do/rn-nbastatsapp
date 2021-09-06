@@ -8,6 +8,7 @@
 
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
   SafeAreaView,
   ScrollView,
@@ -66,6 +67,7 @@ const NbaStatsApp = () => {
 
   return (
     <NavigationContainer>
+      {/* <GestureHandlerRootView> */}
       <SafeAreaView style={backgroundStyle}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <ScrollView
@@ -83,6 +85,7 @@ const NbaStatsApp = () => {
         </ScrollView>
       </SafeAreaView>
       <MainStack />
+    {/* </GestureHandlerRootView> */}
     </NavigationContainer>
   )
 }
