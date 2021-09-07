@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
 })
 
 const TeamTile = ({
+  navigation,
   team,
 }) => {
   // console.log('team:', team)
@@ -27,7 +28,7 @@ const TeamTile = ({
       key={team.abbreviation}
       // title={team.full_name}
       onPress={() =>
-        navigation.navigate('Team', team)
+        navigation.navigate('Team', {team})
       }
       onLongPress={() => {
         console.log('long press')

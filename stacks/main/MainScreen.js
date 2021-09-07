@@ -34,6 +34,7 @@ const MainScreen = ({ navigation }) => {
         // console.log('team full name:', team.full_name)
         return (
           <TeamTile 
+            navigation={navigation}
             key={team.id}
             team={team}
           />

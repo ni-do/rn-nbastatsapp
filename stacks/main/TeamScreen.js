@@ -7,11 +7,13 @@ const TeamScreen = ({
   navigation,
   route
 }) => {
-  const { logo, title, estimated } = route.params
+  const { team } = route.params
   return (
     <View>
-      <Logo image={logo} />
-      <Text>{title} { estimated ? `(${estimated})` : null }</Text>
+      <Logo image={team.logo} />
+      <Text>{team.full_name} { team.estimated ? `(${team.estimated})` : null }</Text>
+      <Text>Conference: {team.conference}</Text>
+      <Text>{team.division} division</Text>
     </View>
   )
 }
