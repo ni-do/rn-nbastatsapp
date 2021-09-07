@@ -3,7 +3,7 @@ import {
   ScrollView,
   StyleSheet,
 } from "react-native"
-import getTeams from "../../data/Teams"
+import { getTeams } from "../../data/Teams"
 import TeamTile from "./TeamTile"
 
 const styles = StyleSheet.create({

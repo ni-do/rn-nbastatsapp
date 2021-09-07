@@ -100,4 +100,21 @@ const getTeams = () => {
   });
 }
 
-export default getTeams;
+const getDetailedTeamInfo = (team) => {
+  console.log('fetching data with axios...')
+  return axios.request(
+    {
+      ...options,
+      url: `https://www.balldontlie.io/api/v1/teams/${team.id}`
+    }
+  ).then((response) => {
+    console.log('data fetched with axios...')
+    const detailedTeamInfo = response.data
+    return detailedTeamInfo
+  })
+}
+
+export {
+  getTeams,
+  getDetailedTeamInfo,
+}
