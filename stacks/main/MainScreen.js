@@ -7,7 +7,7 @@ import { getTeams } from "../../data/Teams"
 import TeamTile from "./TeamTile"
 
 const styles = StyleSheet.create({
-  buttonContainer: {
+  tilesContainer: {
     justifyContent: 'center',
     marginTop: 32,
     paddingHorizontal: 24,
@@ -26,7 +26,7 @@ const MainScreen = ({ navigation }) => {
   }, [])
 
   return (
-    <ScrollView contentContainerStyle={styles.buttonContainer}>
+    <ScrollView contentContainerStyle={styles.tilesContainer}>
       {teams.length > 0 ? 
         teams.map((team) => {
         // console.log('team:', team)
