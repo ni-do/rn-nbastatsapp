@@ -10,9 +10,14 @@ const MainStack = () => {
       <Stack.Screen
         name="Main"
         component={MainScreen}
-        options={{ title: 'Main'}}
+        options={{ title: 'Main Menu'}}
       />
-      <Stack.Screen name="Team" component={TeamScreen} />
+      <Stack.Screen name="Team" 
+      options={{ title: 'Team Info'}}
+      component={TeamScreen}
+      screenOptions={{
+        presentation: 'modal'
+      }}/>
     </Stack.Navigator>
   )
 }

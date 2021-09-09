@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
@@ -33,18 +33,7 @@ const styles = StyleSheet.create({
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+    flex: 1,
   },
 });
 
@@ -52,8 +41,7 @@ const Section = ({children, title}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
-      <Logo image={require("./assets/NBAStatsLogo.png")}/>
-      <Text>{children}</Text>
+      <Logo image={require("./assets/NBAStatsLogo_small.png")}/>
     </View>
   );
 };
@@ -61,13 +49,29 @@ const Section = ({children, title}) => {
 const NbaStatsApp = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
+  const [state, setState] = useState({
+    isSplashScreenEnabled: true,
+  })
+
+  const {
+    isSplashScreenEnabled
+  } = state
+
+  useEffect(() => {
+    setTimeout(() => {
+      setState({
+        ...state,
+        isSplashScreenEnabled: false,
+      })
+    }, 1500)
+  }, [])
+
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  }
 
-  return (
-    <NavigationContainer>
-      {/* <GestureHandlerRootView> */}
+  if(isSplashScreenEnabled) {
+    return (
       <SafeAreaView style={backgroundStyle}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <ScrollView
@@ -77,13 +81,20 @@ const NbaStatsApp = () => {
             style={{
               backgroundColor: isDarkMode ? Colors.black : Colors.white,
             }}>
-            <Section title="App Logo" style={styles.sectionTitle}>
-              Edit <Text style={styles.highlight}>App.js</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
+            <Section title="App Logo" style={styles.sectionTitle} />
           </View>
         </ScrollView>
       </SafeAreaView>
+    )
+  }
+
+  return (
+    <NavigationContainer
+      onReady={() => {
+        console.log('navigation container ready')
+      }}
+    >
+      {/* <GestureHandlerRootView> */}
       <MainStack />
     {/* </GestureHandlerRootView> */}
     </NavigationContainer>
