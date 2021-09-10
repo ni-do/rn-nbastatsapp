@@ -7,17 +7,20 @@ const Stack = createNativeStackNavigator();
 const MainStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Main"
-        component={MainScreen}
-        options={{ title: 'Main Menu'}}
-      />
-      <Stack.Screen name="Team" 
-      options={{ title: 'Team Info'}}
-      component={TeamScreen}
+      <Stack.Group
       screenOptions={{
-        presentation: 'modal'
-      }}/>
+        presentation: 'card'
+      }}>
+        <Stack.Screen
+          name="Main"
+          component={MainScreen}
+          options={{ title: 'Main Menu'}}
+        />
+        <Stack.Screen name="Team" 
+        options={{ title: 'Team Info'}}
+        component={TeamScreen}
+        />
+      </Stack.Group>
     </Stack.Navigator>
   )
 }
