@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { NativeModules } from 'react-native'
+const { CalendarModule } = NativeModules;
 
 import { View, Text, Button, FlatList, StyleSheet } from 'react-native'
 import Logo from './../../screens/Logo.js'
@@ -55,6 +57,10 @@ const TeamScreen = ({
     // TODO: implement
     const latestGame = await getLatestGameForTeam(team)
     console.log('latestGame:', latestGame)
+    //create pseudo calendar entry for game
+    const eventName = `NBA Game: ${latestGame.home_team.name} - ${latestGame.visitor_team.name}`
+    const location = `${latestGame.home_team.city}`
+    CalendarModule.createCalendarEvent(eventName, location)
     setState({
       ...state,
       latestGame,

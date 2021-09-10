@@ -14,6 +14,8 @@
 		370993E9A742160562024ED1 /* libPods-NBAStats-NBAStatsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D49105DBD65A1DE96C1BE1B0 /* libPods-NBAStats-NBAStatsTests.a */; };
 		48D6CDA4141812E481FD8312 /* libPods-NBAStats.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D752151319AFA485CFEC8FE9 /* libPods-NBAStats.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		F79E1BB626EC0FD200ACC81F /* RCTCalendarModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F79E1BB526EC0FD200ACC81F /* RCTCalendarModule.m */; };
+		F79E1BB726EC0FD200ACC81F /* RCTCalendarModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F79E1BB526EC0FD200ACC81F /* RCTCalendarModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		D49105DBD65A1DE96C1BE1B0 /* libPods-NBAStats-NBAStatsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NBAStats-NBAStatsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D752151319AFA485CFEC8FE9 /* libPods-NBAStats.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NBAStats.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F79E1BB426EC0EA300ACC81F /* RCTCalendarModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTCalendarModule.h; sourceTree = "<group>"; };
+		F79E1BB526EC0FD200ACC81F /* RCTCalendarModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTCalendarModule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				F79E1BB426EC0EA300ACC81F /* RCTCalendarModule.h */,
 			);
 			name = NBAStats;
 			sourceTree = "<group>";
@@ -114,7 +119,6 @@
 				27F31E5FD397EBE095F71D69 /* Pods-NBAStats-NBAStatsTests.debug.xcconfig */,
 				9C009C3BC06FF835ECD58C27 /* Pods-NBAStats-NBAStatsTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -128,6 +132,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F79E1BB526EC0FD200ACC81F /* RCTCalendarModule.m */,
 				13B07FAE1A68108700A75B9A /* NBAStats */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* NBAStatsTests */,
@@ -404,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E356F31AD99517003FC87E /* NBAStatsTests.m in Sources */,
+				F79E1BB726EC0FD200ACC81F /* RCTCalendarModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F79E1BB626EC0FD200ACC81F /* RCTCalendarModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
