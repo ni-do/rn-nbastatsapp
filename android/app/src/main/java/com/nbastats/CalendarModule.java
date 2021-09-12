@@ -6,9 +6,15 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import java.util.Map;
 import java.util.HashMap;
-// import java.Log;
+import android.util.Log;
+// import java.util.logging.Logger;
+// import java.util.logging.Level;
+
+
 
 public class CalendarModule extends ReactContextBaseJavaModule {
+  // private final static Logger LOGGER = Logger.getLogger(CalendarModule.class.getName());
+
    CalendarModule(ReactApplicationContext context) {
        super(context);
    }
@@ -17,9 +23,12 @@ public class CalendarModule extends ReactContextBaseJavaModule {
      return "CalendarModule";
    }
 
+   @ReactMethod
    public void createCalendarEvent(String name, String location) {
-    // Log.d(...)
-    System.out.println("CalendarModule", "Create event called with name: " + name
+    // LOGGER.setLevel(Level.INFO);
+    // LOGGER.info("CalendarModule: Create event called with name: " + name
+    // + " and location: " + location);
+    Log.d("CalendarModule", "Create event called with name: " + name
     + " and location: " + location);
    }
 }
