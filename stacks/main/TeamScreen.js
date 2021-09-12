@@ -56,7 +56,7 @@ const TeamScreen = ({
   const fetchLatestGameInfos = async () => {
     // TODO: implement
     const latestGame = await getLatestGameForTeam(team)
-    console.log('latestGame:', latestGame)
+    // console.log('latestGame:', latestGame)
     //create pseudo calendar entry for game
     const eventName = `NBA Game: ${latestGame.home_team.name} - ${latestGame.visitor_team.name}`
     const location = `${latestGame.home_team.city}`

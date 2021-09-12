@@ -1,11 +1,10 @@
 import React, { useEffect } from "react"
 import {
-  // TouchableOpacity,
   Text,
   StyleSheet,
+  TouchableOpacity,
 } from "react-native"
 import Logo from "../../screens/Logo"
-import { TouchableOpacity } from "react-native-gesture-handler"
 
 const styles = StyleSheet.create({
   tinyLogo: {
