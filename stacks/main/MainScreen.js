@@ -29,9 +29,6 @@ const MainScreen = ({ navigation }) => {
     <ScrollView contentContainerStyle={styles.tilesContainer}>
       {teams.length > 0 ? 
         teams.map((team) => {
-        // console.log('team:', team)
-        // console.log('team id:', team.id)
-        // console.log('team full name:', team.full_name)
         return (
           <TeamTile 
             navigation={navigation}
