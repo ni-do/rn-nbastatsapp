@@ -39,10 +39,7 @@ const TeamScreen = ({
 
   const [state, setState] = useState(initialState)
 
-  const {
-    moreTeamInfo,
-    latestGame,
-  } = state
+  const {moreTeamInfo, latestGame} = state
 
   const fetchMoreTeamInfos = async () => {
     const moreTeamInfo = await getDetailedTeamInfo(team)
@@ -56,12 +53,11 @@ const TeamScreen = ({
   const fetchLatestGameInfos = async () => {
     // TODO: implement
     const latestGame = await getLatestGameForTeam(team)
-    // console.log('latestGame:', latestGame)
     //create pseudo calendar entry for game
     const eventName = `NBA Game: ${latestGame.home_team.name} - ${latestGame.visitor_team.name}`
     const location = `${latestGame.home_team.city}`
     CalendarModule.createCalendarEvent(eventName, location)
-    CalendarModule.isWhatsAppInstalled((isWhatsAppInstalled) => {
+    CalendarModule.isWhatsAppInstalled(isWhatsAppInstalled => {
       console.log('whatsapp installed:', isWhatsAppInstalled)
     })
     setState({
@@ -72,25 +68,17 @@ const TeamScreen = ({
 
   return (
     <View>
-      <View
-      style={styles.teamInfo}
-      >
+      <View style={styles.teamInfo}>
         <Logo image={team.logo} style={styles.logo}/>
-        <Text>{team.full_name} { team.estimated ? `(${team.estimated})` : null }</Text>
+        <Text>
+          {team.full_name} {team.estimated ? `(${team.estimated})` : null}
+        </Text>
         <Text>Conference: {team.conference}</Text>
         <Text>{team.division} division</Text>
-        <Button
-          title='More information'
-          onPress={fetchMoreTeamInfos}
-        />
-        <Button
-          title='latest game result'
-          onPress={fetchLatestGameInfos}
-        />
+        <Button title="More information" onPress={fetchMoreTeamInfos} />
+        <Button title="latest game result" onPress={fetchLatestGameInfos} />
       </View>
-      {
-        moreTeamInfo
-        ?
+      {moreTeamInfo ?
         <FlatList
         contentContainerStyle={styles.moreTeamInfoList}
           data={Object.entries({
@@ -98,8 +86,7 @@ const TeamScreen = ({
           })}
           renderItem={({item}) => <Text>{item[0]}: {item[1]}</Text>}
         />
-        : 
-        null
+        : null
       }
 
       {
@@ -113,4 +100,3 @@ const TeamScreen = ({
 }
 
 export default TeamScreen
-
