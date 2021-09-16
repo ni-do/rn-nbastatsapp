@@ -15,7 +15,7 @@ import {
   StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
+  // useColorScheme,
   View,
 } from 'react-native';
 import MainStack from './stacks/main/MainStack.js';
@@ -35,10 +35,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     flex: 1,
   },
+  splashScreenLogoContainer: {
+    backgroundColor: Colors.white,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+  }
 });
 
 const Section = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
+  // const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
       <Logo image={require("./assets/NBAStatsLogo_small.png")}/>
@@ -47,8 +54,6 @@ const Section = ({children, title}) => {
 };
 
 const NbaStatsApp = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
   const [state, setState] = useState({
     isSplashScreenEnabled: true,
   })
@@ -67,20 +72,22 @@ const NbaStatsApp = () => {
   }, [])
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: Colors.lighter,
   }
 
   if(isSplashScreenEnabled) {
     return (
-      <SafeAreaView style={backgroundStyle}>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <SafeAreaView style={backgroundStyle} contentContainerStyle={{
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%',
+      }}>
+        <StatusBar barStyle={'dark-content'} />
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={backgroundStyle}>
-          <View
-            style={{
-              backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            }}>
+          <View style={styles.splashScreenLogoContainer}>
             <Section title="App Logo" style={styles.sectionTitle} />
           </View>
         </ScrollView>
