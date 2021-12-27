@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   teamName: {
     width: 120,
-    textAlign: "center",
+    textAlign: 'center',
   },
   teamButton: {
     margin: 5,
