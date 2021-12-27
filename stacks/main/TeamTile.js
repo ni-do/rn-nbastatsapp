@@ -11,6 +11,10 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
   },
+  teamName: {
+    width: 120,
+    textAlign: "center",
+  },
   teamButton: {
     margin: 5,
   }
@@ -33,7 +37,7 @@ const TeamTile = ({
         console.log('long press')
       }}>
       <Logo image={team.logo} style={styles.tinyLogo}/>
-      <Text>{team.full_name}</Text>
+      <Text style={styles.teamName}>{team.full_name}</Text>
     </TouchableOpacity>
   )
 }
