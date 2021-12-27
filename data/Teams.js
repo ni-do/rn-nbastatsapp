@@ -77,6 +77,18 @@ const getTeams = () => {
         case 'Nets':
           logo = require("./../assets/teamlogos/nets.png")
           break
+        case 'Nuggets':
+          logo = require("./../assets/teamlogos/nuggets.png")
+          break
+        case 'Pistons':
+          logo = require("./../assets/teamlogos/pistons.png")
+          break
+        case 'Rockets':
+          logo = require("./../assets/teamlogos/rockets.png")
+          break
+        case 'Pacers':
+            logo = require("./../assets/teamlogos/pacers.png")
+            break
         case 'Hornets':
           logo = require("./../assets/teamlogos/hornets.png")
           break
