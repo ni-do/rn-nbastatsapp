@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NativeModules } from 'react-native'
+import { NativeModules, ScrollView } from 'react-native'
 const { CalendarModule } = NativeModules;
 
 import { View, Text, Button, FlatList, StyleSheet } from 'react-native'
@@ -67,7 +67,7 @@ const TeamScreen = ({
   }
 
   return (
-    <View>
+    <ScrollView>
       <View style={styles.teamInfo}>
         <Logo image={team.logo} style={styles.logo}/>
         <Text>
@@ -95,7 +95,7 @@ const TeamScreen = ({
         <GameCard game={latestGame} />
         : null
       }
-    </View>
+    </ScrollView>
   )
 }
 

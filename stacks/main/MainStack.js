@@ -14,7 +14,7 @@ const MainStack = () => {
         <Stack.Screen
           name="Main"
           component={MainScreen}
-          options={{ title: 'Main Menu'}}
+          options={{ title: 'Choose A Team'}}
         />
         <Stack.Screen name="Team" 
         options={{ title: 'Team Info'}}
