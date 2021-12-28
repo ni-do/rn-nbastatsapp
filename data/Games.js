@@ -1,4 +1,5 @@
 import axios from "axios";
+const { compareAsc, format} = require('date-fns')
 
 const options = {
   method: 'GET',
@@ -19,7 +20,8 @@ const getGames = () => {
 
 const getLatestGameForTeam = (team) => {
   console.log('fetching latest games with axios...')
-  const currentYear = new Date().getFullYear()
+  const today = new Date()
+  const currentYear = today.getFullYear()
   console.log('currentYear:', currentYear)
   return axios.request(
     {
@@ -28,13 +30,20 @@ const getLatestGameForTeam = (team) => {
       params: {
         ...options.params,
         team_ids: [team.id],
-        per_page: 1,
-        page: 200,
-        season: [currentYear],
+        per_page: 100,
+        page: 1,
+        seasons: [currentYear],
+        end_date: format(today, 'yyyy-MM-dd')
       }
     }
   ).then((response) => {
     console.log('latest games fetched with axios...')
+    // console.log('response.data:', response.data)
+    const latestGamesDesc = response.data.data.sort((firstElem, secElem) => {
+      const firstGameDate = new Date(firstElem.date)
+      const secGameDate = new Date(secElem.date)
+      return compareAsc(firstGameDate, secGameDate)
+    })
     return response.data.data.pop()
   })
 }
