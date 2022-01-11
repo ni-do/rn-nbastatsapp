@@ -22,23 +22,25 @@ const getLatestGameForTeam = (team) => {
   console.log('fetching latest games with axios...')
   const today = new Date()
   const currentYear = today.getFullYear()
-  console.log('currentYear:', currentYear)
+  const params = {
+    ...options.params,
+    team_ids: [team.id],
+    per_page: 100,
+    page: 1,
+    seasons: [currentYear-1, currentYear],
+    end_date: format(today, 'yyyy-MM-dd'),
+  }
+  // console.log('params:', params)
+
   return axios.request(
     {
       ...options,
       // url: `https://www.balldontlie.io/api/v1/teams/${team.id}`
-      params: {
-        ...options.params,
-        team_ids: [team.id],
-        per_page: 100,
-        page: 1,
-        seasons: [currentYear],
-        end_date: format(today, 'yyyy-MM-dd')
-      }
+      params,
     }
   ).then((response) => {
     console.log('latest games fetched with axios...')
-    // console.log('response.data:', response.data)
+    console.log('response.data:', response.data)
     const latestGamesDesc = response.data.data.sort((firstElem, secElem) => {
       const firstGameDate = new Date(firstElem.date)
       const secGameDate = new Date(secElem.date)

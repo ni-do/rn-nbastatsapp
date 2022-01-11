@@ -56,10 +56,10 @@ const TeamScreen = ({
     //create pseudo calendar entry for game
     const eventName = `NBA Game: ${latestGame.home_team.name} - ${latestGame.visitor_team.name}`
     const location = `${latestGame.home_team.city}`
-    CalendarModule.createCalendarEvent(eventName, location)
-    CalendarModule.isWhatsAppInstalled(isWhatsAppInstalled => {
-      console.log('whatsapp installed:', isWhatsAppInstalled)
-    })
+    // CalendarModule.createCalendarEvent(eventName, location)
+    // CalendarModule.isWhatsAppInstalled(isWhatsAppInstalled => {
+    //   console.log('whatsapp installed:', isWhatsAppInstalled)
+    // })
     setState({
       ...state,
       latestGame,
