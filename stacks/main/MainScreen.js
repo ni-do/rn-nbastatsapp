@@ -1,13 +1,31 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import {
   Text,
   View,
   ScrollView,
   StyleSheet,
+  Linking,
 } from "react-native"
 import { getTeams } from "../../data/Teams"
 import TeamTile from "./TeamTile"
 import { getNews } from "../../data/News"
+
+const OpenURLText = ({ url, style, children }) => {
+  const handlePress = useCallback(async () => {
+    // Checking if the link is supported for links with custom URL scheme.
+    const supported = await Linking.canOpenURL(url);
+
+    if (supported) {
+      // Opening the link with some app, if the URL scheme is "http" the web link should be opened
+      // by some browser in the mobile
+      await Linking.openURL(url);
+    } else {
+      Alert.alert(`Don't know how to open this URL: ${url}`);
+    }
+  }, [url]);
+
+  return <Text style={style} onPress={handlePress}>{children}</Text>;
+};
 
 const styles = StyleSheet.create({
   tilesContainer: {
@@ -23,7 +41,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    maxHeight: 120,
+    maxHeight: 380,
   },
   newsItemTitle: {
     fontWeight: 'bold',
@@ -55,12 +73,12 @@ const MainScreen = ({ navigation }) => {
         {news.length > 0 ? 
           news.map((newsItem) => {
             return (
-              <View>
-              <Text style={styles.newsItemTitle}>{newsItem.title}</Text> 
-              <Text style={styles.newsItemTeaserText}>{newsItem.teaserText}</Text> 
-            </View>
-            )
-          })
+                <View>
+                  <Text style={styles.newsItemTitle}>{newsItem.title}</Text> 
+                  <OpenURLText url={newsItem.link} style={styles.newsItemTeaserText}>{newsItem.description}</OpenURLText>
+                </View>
+              );
+            })
           : null
         }
       </ScrollView>

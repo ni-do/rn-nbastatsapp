@@ -1,4 +1,5 @@
 // import axios from "axios";
+import { parse } from 'rss-to-json';
 
 // const options = {
 //   method: 'GET',
@@ -17,18 +18,31 @@ const getNews = () => {
   //   console.log('error while fetching data with axios...')
   //   console.error(error);
   // });
-  return [
-    {
-      id: 4711,
-      title: 'Mavs about to win 10 in a row',
-      teaserText: 'Will they beat the Blazers on the road?',
+
+  return parse('https://news.google.com/rss/search?q=nba&hl=de&gl=DE&ceid=DE:de').then(
+    rss => {
+      console.log(JSON.stringify(rss, null, 3));
+      return rss.items
     },
-    {
-      id: 4712,
-      title: 'Rumours: Lakers about to trade LeBron?',
-      teaserText: 'Experts: LaMelo to be the next LA superstar',
-    },
-  ]
+  );
+
+  // return [
+  //   {
+  //     id: 4711,
+  //     title: 'Mavs about to win 10 in a row',
+  //     teaserText: 'Will they beat the Blazers on the road?',
+  //   },
+  //   {
+  //     id: 4712,
+  //     title: 'Rumours: Lakers about to trade LeBron?',
+  //     teaserText: 'Experts: LaMelo to be the next LA superstar',
+  //   },
+  //   {
+  //     id: 815,
+  //     title: 'Kyrie boostered the 3rd time',
+  //     teaserText: 'Irving looking forward to join the Nets on the home court',
+  //   },
+  // ]
 }
 
 export {
