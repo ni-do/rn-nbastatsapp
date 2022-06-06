@@ -1,5 +1,6 @@
 // import axios from "axios";
 import { parse } from 'rss-to-json';
+import { decode } from 'html-entities'
 
 // const options = {
 //   method: 'GET',
@@ -19,32 +20,43 @@ const getNews = () => {
   //   console.error(error);
   // });
 
-  return parse('https://news.google.com/rss/search?q=nba&hl=de&gl=DE&ceid=DE:de').then(
-    rss => {
-      console.log(JSON.stringify(rss, null, 3));
-      return rss.items
-    },
-  );
+  return parse(
+    'https://news.google.com/rss/search?q=nba&hl=de&gl=DE&ceid=DE:de',
+  ).then(rss => {
+    // console.log(JSON.stringify(rss, null, 3));
+    console.log(rss.items);
+    const filteredItems = rss.items.map(item => {
+      const decodedDescription = decode(item.description);
+      const relatedNewsItems = decodedDescription
+        .split('</li><li>')
+        .map(relatedNewsItem => {
+          const relItemHref = relatedNewsItem.match(/<a href="([^"]*)"/)[1];
+          const relNewsProviderName = relatedNewsItem.match(
+            /<font color="#6f6f6f">(.*)<\/font>/,
+          )[1];
+          return {
+            description: relatedNewsItem
+              .replace(/<font color="#6f6f6f">.*<\/font>/, '')
+              .replace(/<\/?[^>]+(>|$)/g, '')
+              .replace(/\&nbsp;/g, ' '),
+            href: relItemHref,
+            provider: {
+              name: relNewsProviderName,
+            }
+          };
+        });
 
-  // return [
-  //   {
-  //     id: 4711,
-  //     title: 'Mavs about to win 10 in a row',
-  //     teaserText: 'Will they beat the Blazers on the road?',
-  //   },
-  //   {
-  //     id: 4712,
-  //     title: 'Rumours: Lakers about to trade LeBron?',
-  //     teaserText: 'Experts: LaMelo to be the next LA superstar',
-  //   },
-  //   {
-  //     id: 815,
-  //     title: 'Kyrie boostered the 3rd time',
-  //     teaserText: 'Irving looking forward to join the Nets on the home court',
-  //   },
-  // ]
-}
+      return {
+        ...item,
+        description: decodedDescription
+          .replace(/<\/?[^>]+(>|$)/g, '')
+          .replace(/\&nbsp;/g, ' '),
+        relatedNewsItems,
+      };
+    });
+    console.log(filteredItems);
+    return filteredItems;
+  });
+};
 
-export {
-  getNews
-}
+export {getNews};

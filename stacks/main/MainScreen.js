@@ -10,6 +10,7 @@ import { getTeams } from "../../data/Teams"
 import TeamTile from "./TeamTile"
 import { getNews } from "../../data/News"
 
+
 const OpenURLText = ({ url, style, children }) => {
   const handlePress = useCallback(async () => {
     // Checking if the link is supported for links with custom URL scheme.
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    maxHeight: 380,
+    // maxHeight: 380,
   },
   newsItemTitle: {
     fontWeight: 'bold',
@@ -73,9 +74,16 @@ const MainScreen = ({ navigation }) => {
         {news.length > 0 ? 
           news.map((newsItem) => {
             return (
-                <View>
-                  <Text style={styles.newsItemTitle}>{newsItem.title}</Text> 
-                  <OpenURLText url={newsItem.link} style={styles.newsItemTeaserText}>{newsItem.description}</OpenURLText>
+                <View key={newsItem.guid}>
+                  <Text style={styles.newsItemTitle}>{newsItem.title}</Text>
+                  {newsItem.relatedNewsItems.map(relNewsItem => (
+                    <OpenURLText
+                      url={relNewsItem.href}
+                      style={styles.newsItemTeaserText}>
+                      {relNewsItem.provider.name} - 
+                      {relNewsItem.description}
+                    </OpenURLText>
+                  ))}
                 </View>
               );
             })
