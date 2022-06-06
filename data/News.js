@@ -9,7 +9,7 @@ import { decode } from 'html-entities'
 //   // headers: {'x-rapidapi-host': 'free-nba.p.rapidapi.com', 'x-rapidapi-key': 'undefined'}
 // }
 
-const getNews = () => {
+const getNews = ({maxAmountOfNews = 3} = {}) => {
   // console.log('fetching data with axios...')
   // return axios.request(options).then(function (response) {
   //   console.log('data fetched with axios...')
@@ -23,8 +23,6 @@ const getNews = () => {
   return parse(
     'https://news.google.com/rss/search?q=nba&hl=de&gl=DE&ceid=DE:de',
   ).then(rss => {
-    // console.log(JSON.stringify(rss, null, 3));
-    console.log(rss.items);
     const filteredItems = rss.items.map(item => {
       const decodedDescription = decode(item.description);
       const relatedNewsItems = decodedDescription
@@ -54,8 +52,7 @@ const getNews = () => {
         relatedNewsItems,
       };
     });
-    console.log(filteredItems);
-    return filteredItems;
+    return filteredItems.slice(0, maxAmountOfNews);
   });
 };
 
