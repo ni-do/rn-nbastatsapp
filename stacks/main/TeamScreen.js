@@ -80,11 +80,12 @@ const TeamScreen = ({
       </View>
       {moreTeamInfo ?
         <FlatList
-        contentContainerStyle={styles.moreTeamInfoList}
-          data={Object.entries({
-            ...moreTeamInfo,
-          })}
-          renderItem={({item}) => <Text>{item[0]}: {item[1]}</Text>}
+          contentContainerStyle={styles.moreTeamInfoList}
+          data={Object.entries(moreTeamInfo.data)}
+          keyExtractor={(item) => item[0]}
+          renderItem={({item}) => (
+            <Text>{`${item[0]}: ${JSON.stringify(item[1])}`}</Text>
+          )}
         />
         : null
       }

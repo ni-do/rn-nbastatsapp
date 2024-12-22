@@ -1,49 +1,12 @@
-// const getTeams = () => [
-//   {
-//     "teamName": "lakers",
-//     "title": "Lakers",
-//     "logo": require("./../assets/teamlogos/lakers.png"),
-//     "estimated": "1947"
-//   },
-//   {
-//     "teamName": "mavericks",
-//     "title": "Mavericks",
-//     "logo": require("./../assets/teamlogos/mavericks.png"),
-//     "estimated": "1980"
-//   },
-//   {
-//     "teamName": "76ers",
-//     "title": "76ers",
-//     "logo": require("./../assets/teamlogos/76ers.png"),
-//     "estimated": null
-//   },
-//   {
-//     "teamName": "celtics",
-//     "title": "Celtics",
-//     "logo": require("./../assets/teamlogos/celtics.png"),
-//     "estimated": null
-//   },
-//   {
-//     "teamName": "warriors",
-//     "title": "Warriors",
-//     "logo": require("./../assets/teamlogos/warriors.png"),
-//     "estimated": "1946"
-//   },
-//   {
-//     "teamName": "cavaliers",
-//     "title": "Cavaliers",
-//     "logo": require("./../assets/teamlogos/cavaliers.png"),
-//     "estimated": "1970"
-//   },
-// ]
-
 import axios from "axios";
+import Config from "react-native-config";
 
 const options = {
   method: 'GET',
-  url: 'https://www.balldontlie.io/api/v1/teams',
+  url: Config.BALLDONTLIE_API_URL + Config.BALLDONTLIE_API_VERSION + Config.BALLDONTLIE_API_ENDPOINT_TEAMS, // 'https://api.balldontlie.io/v1/teams',
   params: {page: '0'},
   // headers: {'x-rapidapi-host': 'free-nba.p.rapidapi.com', 'x-rapidapi-key': 'undefined'}
+  headers: {'Authorization': Config.BALLDONTLIE_API_KEY }
 }
 
 const getTeams = () => {
@@ -117,11 +80,13 @@ const getDetailedTeamInfo = (team) => {
   return axios.request(
     {
       ...options,
-      url: `https://www.balldontlie.io/api/v1/teams/${team.id}`
+      url: Config.BALLDONTLIE_API_URL + Config.BALLDONTLIE_API_VERSION + Config.BALLDONTLIE_API_ENDPOINT_TEAMS + `/${team.id}`,
+      headers: {'Authorization': Config.BALLDONTLIE_API_KEY }
     }
   ).then((response) => {
     console.log('data fetched with axios...')
     const detailedTeamInfo = response.data
+    console.log('detailed team info:', detailedTeamInfo)
     return detailedTeamInfo
   })
 }

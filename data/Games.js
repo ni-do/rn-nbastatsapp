@@ -1,11 +1,13 @@
 import axios from "axios";
+import Config from "react-native-config";
 const { compareAsc, format} = require('date-fns')
 
 const options = {
   method: 'GET',
-  url: 'https://www.balldontlie.io/api/v1/games',
+  url: Config.BALLDONTLIE_API_URL + Config.BALLDONTLIE_API_VERSION + Config.BALLDONTLIE_API_ENDPOINT_GAMES, // 'https://www.balldontlie.io/api/v1/games',
   params: {page: '0'},
   // headers: {'x-rapidapi-host': 'free-nba.p.rapidapi.com', 'x-rapidapi-key': 'undefined'}
+  headers: {'Authorization': Config.BALLDONTLIE_API_KEY }
 }
 
 const getGames = () => {
