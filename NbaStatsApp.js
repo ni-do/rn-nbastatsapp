@@ -16,6 +16,7 @@ import {
   // useColorScheme,
   View,
 } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 import MainStack from './stacks/main/MainStack.js';
 import Logo from './screens/Logo.js'
 
@@ -27,7 +28,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
@@ -52,6 +53,7 @@ const Section = ({children, title}) => {
 };
 
 const NbaStatsApp = () => {
+  EStyleSheet.build();
   const [state, setState] = useState({
     isSplashScreenEnabled: true,
   })

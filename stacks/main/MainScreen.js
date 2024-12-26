@@ -3,9 +3,10 @@ import {
   Text,
   View,
   ScrollView,
-  StyleSheet,
+  // StyleSheet,
   Linking,
 } from "react-native"
+import EStyleSheet from 'react-native-extended-stylesheet';
 import { getTeams } from "../../data/Teams"
 import TeamTile from "./TeamTile"
 import { getNews } from "../../data/News"
@@ -28,7 +29,7 @@ const OpenURLText = ({ url, style, children }) => {
   return <Text style={style} onPress={handlePress}>{children}</Text>;
 };
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
   tilesContainer: {
     justifyContent: 'center',
     marginTop: 32,
@@ -56,8 +57,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     backgroundColor: 'lightgray',
-  },
-  sectionTitle: {
   }
 })
 
