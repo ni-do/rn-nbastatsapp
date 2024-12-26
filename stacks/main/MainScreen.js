@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
   newsContainer: {
     // justifyContent: 'center',
-    marginTop: 32,
+    marginTop: 12,
     paddingHorizontal: 24,
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -46,10 +46,19 @@ const styles = StyleSheet.create({
   },
   newsItemTitle: {
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   newsItemTeaserText: {
     fontStyle: 'italic',
   },
+  sectionTitle: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 18,
+    backgroundColor: 'lightgray',
+  },
+  sectionTitle: {
+  }
 })
 
 const MainScreen = ({ navigation }) => {
@@ -69,7 +78,7 @@ const MainScreen = ({ navigation }) => {
 
   return (
     <ScrollView>
-      <Text>Latest News</Text>
+      <Text style={styles.sectionTitle}>Latest News</Text>
       <ScrollView contentContainerStyle={styles.newsContainer}>
         {news.length > 0 ? 
           news.map((newsItem) => {
@@ -90,8 +99,9 @@ const MainScreen = ({ navigation }) => {
           : null
         }
       </ScrollView>
+      <Text style={styles.sectionTitle}>Choose A Team</Text>
       <ScrollView contentContainerStyle={styles.tilesContainer}>
-        <Text>Choose A Team</Text>
+        
         {teams.length > 0 ? 
           teams.map((team) => {
             return (
