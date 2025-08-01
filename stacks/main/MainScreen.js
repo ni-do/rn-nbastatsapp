@@ -56,8 +56,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     backgroundColor: 'lightgray',
-  },
-  sectionTitle: {
   }
 })
 
