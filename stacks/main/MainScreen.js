@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   },
   newsItemTeaserText: {
     fontStyle: 'italic',
+    padding: 10
   },
   sectionTitle: {
     fontWeight: 'bold',
