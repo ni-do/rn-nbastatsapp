@@ -50,15 +50,65 @@ const getTeams = () => {
           logo = require("./../assets/teamlogos/rockets.png")
           break
         case 'Pacers':
-            logo = require("./../assets/teamlogos/pacers.png")
-            break
+          logo = require("./../assets/teamlogos/pacers.png")
+          break
         case 'Hornets':
           logo = require("./../assets/teamlogos/hornets.png")
           break
         case 'Bulls':
           logo = require("./../assets/teamlogos/bulls.png")
           break
+        case 'Clippers':
+          logo = require("./../assets/teamlogos/clippers.png")
+          break
+        case 'Bucks':
+          logo = require("./../assets/teamlogos/bucks.png")
+          break
+        case 'Grizzlies':
+          logo = require("./../assets/teamlogos/grizzlies.png")
+          break
+        case 'Heat':
+          logo = require("./../assets/teamlogos/heat.png")
+          break
+        case 'Timberwolves':
+          logo = require("./../assets/teamlogos/timberwolves.png")
+          break
+        case 'Pelicans':
+          logo = require("./../assets/teamlogos/pelicans.png")
+          break
+        case 'Knicks':
+          logo = require("./../assets/teamlogos/knicks.png")
+          break
+        case 'Thunder':
+          logo = require("./../assets/teamlogos/thunder.png")
+          break
+        case 'Magic':
+          logo = require("./../assets/teamlogos/orlando.png")
+          break
+        case 'Suns':
+          logo = require("./../assets/teamlogos/phoenix.png")
+          break
+        case 'Trail Blazers':
+          logo = require("./../assets/teamlogos/portland.png")
+          break
+        case 'Kings':
+          logo = require("./../assets/teamlogos/sacramento.png")
+          break
+        case 'Spurs':
+          logo = require("./../assets/teamlogos/spurs.png")
+          break
+        case 'Raptors':
+          logo = require("./../assets/teamlogos/toronto.png")
+          break
+        case 'Jazz':
+          logo = require("./../assets/teamlogos/utah.png")
+          break
+        case 'Magic':
+          logo = require("./../assets/teamlogos/orlando.png")
+          break
         case 'Wizards':
+          logo = require("./../assets/teamlogos/wizards.png")
+          break
         default:
           logo = require("./../assets/teamlogos/no_logo.png")
           break;
